@@ -1,0 +1,23 @@
+@startuml TZ
+autonumber "<b>[00]"
+
+box "Серфис работы с заказами"
+database "PGsql" as DB
+participant "backend" as serv
+end box
+
+
+
+queue "[Apache Kafka]" as kafka
+participant "Call-центр" as call
+participant "Отдел закупок" as buy
+participant "Логистика" as logist
+participant "ПВЗ " as pvz
+participant "Курьер " as courier
+participant "Интернет эквайринг " as ie
+
+serv -> kafka: Запрос статуса заказа
+call -> kafka: Ответ от Call-центра
+
+
+@enduml
